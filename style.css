@@ -1,0 +1,1002 @@
+/* ============================================
+   Ryan Dalcin — Portfólio
+   Glassmorphism + estética dev
+   ============================================ */
+
+:root {
+    --roxo-botao: #820ad1;
+    --roxo-botao-claro: #b26bef;
+
+    --roxo-700: #0a0a0a;
+    --roxo-500: #e5e5e5;
+    --roxo-400: #ffffff;
+
+    --cyan: #d4d4d4;
+    --verde-terminal: #ffffff;
+    --amarelo: #9a9a9a;
+    --vermelho: #6b6b6b;
+
+    --texto: #f5f5f5;
+    --texto-suave: #a8a8a8;
+    --texto-mono: #cfcfcf;
+
+    --vidro: rgba(255, 255, 255, 0.045);
+    --vidro-borda: rgba(255, 255, 255, 0.16);
+    --vidro-hover: rgba(255, 255, 255, 0.08);
+
+    --fundo: #000000;
+    --grade: rgba(255, 255, 255, 0.025);
+    --brilho-1: rgba(255, 255, 255, 0.08);
+    --brilho-2: rgba(255, 255, 255, 0.05);
+    --brilho-3: rgba(255, 255, 255, 0.06);
+
+    --card-interno: rgba(0, 0, 0, 0.20);
+    --card-projeto: rgba(0, 0, 0, 0.15);
+
+    --fonte-display: "Segoe UI", -apple-system, BlinkMacSystemFont,
+        "Helvetica Neue", Arial, sans-serif;
+
+    --fonte-mono: "SFMono-Regular", "Cascadia Code", "Fira Code",
+        Consolas, "Courier New", monospace;
+
+    --raio: 18px;
+    --raio-sm: 10px;
+
+    --sombra-vidro: 0 8px 32px rgba(0, 0, 0, 0.35);
+
+    --transicao: 0.25s ease;
+}
+
+
+/* ============================================
+   RESET
+   ============================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family: var(--fonte-display);
+    color: var(--texto);
+
+    line-height: 1.65;
+
+    -webkit-font-smoothing: antialiased;
+
+    background: var(--fundo);
+
+    overflow-x: hidden;
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
+}
+
+
+/* ============================================
+   FUNDO
+   ============================================ */
+
+body::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    background-image:
+        linear-gradient(var(--grade) 1px,
+            transparent 1px),
+        linear-gradient(90deg,
+            var(--grade) 1px,
+            transparent 1px);
+
+    background-size: 42px 42px;
+
+    z-index: 0;
+
+    transition: background-image 0.3s ease;
+}
+
+body::after {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 0;
+
+    background:
+        radial-gradient(36vw 36vw at 15% 10%,
+            var(--brilho-1),
+            transparent 70%),
+        radial-gradient(30vw 30vw at 90% 15%,
+            var(--brilho-2),
+            transparent 70%),
+        radial-gradient(40vw 40vw at 50% 100%,
+            var(--brilho-3),
+            transparent 70%);
+
+    filter: blur(60px);
+
+    transition: background 0.3s ease;
+}
+
+
+/* ============================================
+   CAMADA DE CONTEÚDO
+   ============================================ */
+
+header,
+section,
+footer {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* ============================================
+   GLASSMORPHISM
+   ============================================ */
+
+header,
+section {
+    background: var(--vidro);
+
+    border: 1px solid var(--vidro-borda);
+
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+
+    box-shadow: var(--sombra-vidro);
+
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* ============================================
+   HEADER
+   ============================================ */
+
+header {
+    margin: 24px auto 0;
+
+    max-width: 860px;
+
+    padding: 0;
+
+    border-radius: var(--raio);
+
+    overflow: hidden;
+}
+
+
+/* Barra estilo terminal */
+
+header::before {
+    content: "● ● ●";
+
+    display: block;
+
+    font-size: 0.7rem;
+
+    letter-spacing: 6px;
+
+    color: var(--vermelho);
+
+    background: rgba(255, 255, 255, 0.04);
+
+    border-bottom: 1px solid var(--vidro-borda);
+
+    padding: 12px 20px;
+
+    font-family: var(--fonte-mono);
+
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease;
+}
+
+header h1,
+header h2,
+header nav {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+header h1 {
+    margin: 32px 0 4px;
+
+    font-size: clamp(2rem, 4.5vw, 2.8rem);
+
+    font-weight: 800;
+
+    letter-spacing: -0.02em;
+
+    transition: color 0.3s ease;
+}
+
+header h1::before {
+    content: "<";
+
+    color: var(--verde-terminal);
+
+    font-family: var(--fonte-mono);
+
+    margin-right: 4px;
+
+    font-weight: 600;
+}
+
+header h1::after {
+    content: " />";
+
+    color: var(--verde-terminal);
+
+    font-family: var(--fonte-mono);
+
+    font-weight: 600;
+}
+
+header h2 {
+    margin: 0 0 28px;
+
+    font-weight: 400;
+
+    font-size: 1rem;
+
+    font-family: var(--fonte-mono);
+
+    color: var(--texto-mono);
+
+    transition: color 0.3s ease;
+}
+
+header h2::before {
+    content: "// ";
+
+    color: var(--texto-suave);
+}
+
+
+/* ============================================
+   NAVEGAÇÃO
+   ============================================ */
+
+nav {
+    padding-bottom: 28px;
+}
+
+nav ul {
+    list-style: none;
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin: 0;
+
+    padding: 0;
+}
+
+nav a {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    color: var(--texto);
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    font-size: 0.85rem;
+
+    font-family: var(--fonte-mono);
+
+    padding: 9px 16px;
+
+    border-radius: var(--raio-sm);
+
+    background: rgba(130, 10, 209, 0.16);
+
+    border: 1px solid rgba(130, 10, 209, 0.4);
+
+    transition:
+        background-color var(--transicao),
+        border-color var(--transicao),
+        transform var(--transicao),
+        box-shadow var(--transicao),
+        color var(--transicao);
+}
+
+nav a::before {
+    content: "#";
+
+    color: var(--roxo-botao-claro);
+}
+
+nav a:hover,
+nav a:focus-visible {
+    background: rgba(130, 10, 209, 0.32);
+
+    border-color: var(--roxo-botao-claro);
+
+    box-shadow:
+        0 4px 18px rgba(130, 10, 209, 0.35);
+
+    transform: translateY(-2px);
+}
+
+
+/* ============================================
+   BOTÃO DE TEMA
+   ============================================ */
+
+#theme-toggle {
+    margin: 0 40px 24px;
+
+    padding: 9px 16px;
+
+    border-radius: var(--raio-sm);
+
+    border: 1px solid rgba(130, 10, 209, 0.4);
+
+    background: rgba(130, 10, 209, 0.16);
+
+    color: var(--texto);
+
+    font-family: var(--fonte-mono);
+
+    font-size: 0.85rem;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background-color var(--transicao),
+        border-color var(--transicao),
+        transform var(--transicao),
+        box-shadow var(--transicao),
+        color var(--transicao);
+}
+
+#theme-toggle:hover {
+    background: rgba(130, 10, 209, 0.32);
+
+    border-color: var(--roxo-botao-claro);
+
+    box-shadow:
+        0 4px 18px rgba(130, 10, 209, 0.35);
+
+    transform: translateY(-2px);
+}
+
+#theme-toggle:active {
+    transform: translateY(0);
+}
+
+#theme-toggle:focus-visible {
+    outline: 2px solid var(--roxo-botao-claro);
+
+    outline-offset: 3px;
+}
+
+
+/* ============================================
+   SEÇÕES
+   ============================================ */
+
+section {
+    max-width: 780px;
+
+    margin: 28px auto;
+
+    padding: 30px 32px;
+
+    border-radius: var(--raio);
+}
+
+section:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+section h3 {
+    margin-top: 0;
+
+    font-size: 1.25rem;
+
+    font-weight: 700;
+
+    color: var(--texto);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    font-family: var(--fonte-mono);
+}
+
+section h3::before {
+    content: "{}";
+
+    color: var(--cyan);
+
+    font-weight: 600;
+}
+
+
+/* ============================================
+   DADOS PESSOAIS
+   ============================================ */
+
+#Dados-Pessoais li {
+    list-style: none;
+
+    white-space: pre-line;
+
+    font-family: var(--fonte-mono);
+
+    font-size: 0.95rem;
+
+    color: var(--texto-suave);
+
+    background: var(--card-interno);
+
+    border: 1px solid var(--vidro-borda);
+
+    border-radius: var(--raio-sm);
+
+    padding: 20px;
+
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease;
+}
+
+#Dados-Pessoais a {
+    color: var(--cyan);
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    border-bottom: 1px dashed var(--cyan);
+
+    transition:
+        color var(--transicao),
+        border-color var(--transicao);
+}
+
+#Dados-Pessoais a:hover {
+    color: var(--roxo-400);
+
+    border-color: var(--roxo-400);
+}
+
+
+/* ============================================
+   EXPERIÊNCIA
+   ============================================ */
+
+#Experiencia-Profissional ul {
+    list-style: none;
+
+    padding: 0;
+
+    margin: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+#Experiencia-Profissional li {
+    position: relative;
+
+    padding: 14px 16px 14px 22px;
+
+    background: var(--card-interno);
+
+    border: 1px solid var(--vidro-borda);
+
+    border-left: 3px solid var(--verde-terminal);
+
+    border-radius: var(--raio-sm);
+
+    font-weight: 500;
+
+    font-size: 0.95rem;
+
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease;
+}
+
+#Experiencia-Profissional li::before {
+    content: "$";
+
+    position: absolute;
+
+    left: 6px;
+
+    color: var(--verde-terminal);
+
+    font-family: var(--fonte-mono);
+
+    font-weight: 700;
+}
+
+#Experiencia-Profissional-Titulo {
+    font-weight: 700;
+
+    color: var(--roxo-botao-claro);
+
+    font-size: 1.5rem;
+
+    margin-bottom: 4px;
+}
+
+
+/* ============================================
+   PROJETOS
+   ============================================ */
+
+#ProjetosTitulo {
+    font-weight: 700;
+
+    color: var(--roxo-botao-claro);
+
+    font-size: 1.5rem;
+
+    margin-bottom: 4px;
+}
+
+#Projetos>ul {
+    list-style: none;
+
+    padding: 0;
+
+    margin: 0;
+
+    display: grid;
+
+    gap: 14px;
+}
+
+#Projetos>ul>li {
+    border: 1px solid var(--vidro-borda);
+
+    background: var(--card-projeto);
+
+    border-radius: var(--raio-sm);
+
+    padding: 16px 18px;
+
+    transition:
+        box-shadow var(--transicao),
+        transform var(--transicao),
+        border-color var(--transicao),
+        background-color 0.3s ease;
+}
+
+#Projetos>ul>li:hover {
+    box-shadow:
+        0 6px 24px rgba(255, 255, 255, 0.12);
+
+    transform: translateY(-3px);
+
+    border-color: var(--roxo-400);
+}
+
+#Projetos a {
+    color: var(--texto);
+
+    font-weight: 700;
+
+    font-size: 1rem;
+
+    text-decoration: none;
+
+    font-family: var(--fonte-mono);
+
+    transition: color var(--transicao);
+}
+
+#Projetos a::before {
+    content: "> ";
+
+    color: var(--verde-terminal);
+}
+
+#Projetos a:hover {
+    color: var(--roxo-400);
+}
+
+#Projetos details {
+    margin-top: 10px;
+}
+
+#Projetos summary {
+    cursor: pointer;
+
+    color: var(--texto-suave);
+
+    font-weight: 600;
+
+    font-size: 0.82rem;
+
+    font-family: var(--fonte-mono);
+
+    outline: none;
+
+    transition: color var(--transicao);
+}
+
+#Projetos summary:focus-visible {
+    outline: 2px solid var(--roxo-400);
+
+    outline-offset: 2px;
+
+    border-radius: 4px;
+}
+
+#Projetos details p {
+    margin: 10px 0 0;
+
+    color: var(--texto-suave);
+
+    font-size: 0.92rem;
+}
+
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+footer {
+    max-width: 780px;
+
+    margin: 28px auto 40px;
+
+    text-align: center;
+
+    padding: 24px;
+
+    border-radius: var(--raio);
+
+    color: var(--texto-suave);
+
+    font-size: 0.82rem;
+
+    font-family: var(--fonte-mono);
+
+    transition:
+        color 0.3s ease,
+        background-color 0.3s ease;
+}
+
+footer p {
+    margin: 4px 0;
+}
+
+#mailto {
+    color: var(--roxo-botao-claro);
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    border-bottom: 1px dashed var(--roxo-botao-claro);
+
+    transition:
+        color var(--transicao),
+        border-color var(--transicao);
+}
+
+
+/* ============================================
+   MODO CLARO
+   ============================================ */
+
+body.light-mode {
+    --texto: #171717;
+    --texto-suave: #555555;
+    --texto-mono: #333333;
+
+    --vidro: rgba(255, 255, 255, 0.65);
+    --vidro-borda: rgba(0, 0, 0, 0.12);
+    --vidro-hover: rgba(255, 255, 255, 0.85);
+
+    --fundo: #eeeeee;
+
+    --grade: rgba(0, 0, 0, 0.035);
+
+    --brilho-1: rgba(130, 10, 209, 0.08);
+    --brilho-2: rgba(130, 10, 209, 0.05);
+    --brilho-3: rgba(130, 10, 209, 0.04);
+
+    --card-interno: rgba(255, 255, 255, 0.50);
+    --card-projeto: rgba(255, 255, 255, 0.50);
+
+    --sombra-vidro: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+
+/* Fundo do modo claro */
+
+body.light-mode::before {
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.035) 1px,
+            transparent 1px),
+        linear-gradient(90deg,
+            rgba(0, 0, 0, 0.035) 1px,
+            transparent 1px);
+}
+
+body.light-mode::after {
+    background:
+        radial-gradient(36vw 36vw at 15% 10%,
+            rgba(130, 10, 209, 0.08),
+            transparent 70%),
+        radial-gradient(30vw 30vw at 90% 15%,
+            rgba(130, 10, 209, 0.05),
+            transparent 70%),
+        radial-gradient(40vw 40vw at 50% 100%,
+            rgba(130, 10, 209, 0.04),
+            transparent 70%);
+}
+
+
+/* Header no modo claro */
+
+body.light-mode header::before {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+
+/* Hover das seções no modo claro */
+
+body.light-mode section:hover {
+    border-color: rgba(0, 0, 0, 0.25);
+}
+
+
+/* Projetos no modo claro */
+
+body.light-mode #Projetos>ul>li:hover {
+    box-shadow:
+        0 6px 24px rgba(0, 0, 0, 0.10);
+}
+
+
+/* Links no modo claro */
+
+body.light-mode #Projetos a {
+    color: #222222;
+}
+
+body.light-mode #Projetos a:hover {
+    color: var(--roxo-botao);
+}
+
+
+/* ============================================
+   TRANSIÇÕES
+   ============================================ */
+
+body,
+header,
+section,
+footer,
+#theme-toggle,
+nav a,
+#Dados-Pessoais li,
+#Experiencia-Profissional li,
+#Projetos>ul>li {
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* ============================================
+   ACESSIBILIDADE
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    * {
+        transition: none !important;
+    }
+}
+
+
+/* ============================================
+   RESPONSIVIDADE
+   ============================================ */
+
+@media (max-width: 600px) {
+
+    header h1,
+    header h2,
+    header nav {
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+
+    section {
+        margin: 20px 16px;
+
+        padding: 22px 20px;
+    }
+
+    nav a {
+        padding: 8px 14px;
+
+        font-size: 0.78rem;
+    }
+
+    #theme-toggle {
+        margin-left: 22px;
+        margin-right: 22px;
+    }
+}
+
+/* ============================================
+   LINKS VISÍVEIS — MODO ESCURO E CLARO
+   ============================================ */
+
+a {
+    color: #b26bef;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition:
+        color 0.25s ease,
+        text-shadow 0.25s ease;
+}
+
+/* Hover dos links */
+a:hover {
+    color: #d39aff;
+    text-shadow: 0 0 8px rgba(178, 107, 239, 0.45);
+}
+
+/* Links visitados */
+a:visited {
+    color: #b26bef;
+}
+
+/* Links focados pelo teclado */
+a:focus-visible {
+    outline: 2px solid #b26bef;
+    outline-offset: 3px;
+    border-radius: 3px;
+}
+
+
+/* ============================================
+   MODO CLARO
+   ============================================ */
+
+body.light-mode a {
+    color: #6d18a8;
+}
+
+body.light-mode a:hover {
+    color: #820ad1;
+    text-shadow: 0 0 6px rgba(130, 10, 209, 0.25);
+}
+
+body.light-mode a:visited {
+    color: #6d18a8;
+}
+
+body.light-mode a:focus-visible {
+    outline-color: #820ad1;
+}
+
+
+/* ============================================
+   LINKS DE GITHUB E LINKEDIN
+   ============================================ */
+
+#Dados-Pessoais a {
+    display: inline-block;
+
+    color: #b26bef;
+
+    font-weight: 700;
+
+    text-decoration: underline;
+
+    text-decoration-style: dashed;
+
+    text-decoration-thickness: 1px;
+
+    text-underline-offset: 4px;
+}
+
+#Dados-Pessoais a:hover {
+    color: #d39aff;
+
+    text-shadow:
+        0 0 8px rgba(178, 107, 239, 0.5);
+}
+
+body.light-mode #Dados-Pessoais a {
+    color: #6d18a8;
+}
+
+body.light-mode #Dados-Pessoais a:hover {
+    color: #820ad1;
+
+    text-shadow:
+        0 0 6px rgba(130, 10, 209, 0.3);
+}
+
+
+/* ============================================
+   LINK DO E-MAIL NO FOOTER
+   ============================================ */
+
+#mailto {
+    color: #b26bef !important;
+
+    font-weight: 700;
+
+    text-decoration: underline !important;
+
+    text-decoration-style: dashed;
+
+    text-underline-offset: 4px;
+}
+
+#mailto:hover {
+    color: #d39aff !important;
+
+    text-shadow:
+        0 0 8px rgba(178, 107, 239, 0.5);
+}
+
+body.light-mode #mailto {
+    color: #6d18a8 !important;
+}
+
+body.light-mode #mailto:hover {
+    color: #820ad1 !important;
+
+    text-shadow:
+        0 0 6px rgba(130, 10, 209, 0.3);
+}
